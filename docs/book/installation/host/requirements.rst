@@ -125,7 +125,7 @@ By default Cuckoo adopts `tcpdump`_, the prominent open source solution.
 Install it on Ubuntu::
 
     $ sudo apt-get install tcpdump apparmor-utils
-    $ sudo aa-disable /usr/sbin/tcpdump
+    $ sudo aa-disable /usr/bin/tcpdump
 
 Note that the ``AppArmor`` profile disabling (the ``aa-disable`` command) is
 only required when using the default ``CWD`` directory as AppArmor would
@@ -142,12 +142,12 @@ root you'll have to set specific Linux capabilities to the binary::
 
     $ sudo groupadd pcap
     $ sudo usermod -a -G pcap cuckoo
-    $ sudo chgrp pcap /usr/sbin/tcpdump
-    $ sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
+    $ sudo chgrp pcap /usr/bin/tcpdump
+    $ sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/tcpdump
 
 You can verify the results of the last command with::
 
-    $ getcap /usr/sbin/tcpdump
+    $ getcap /usr/bin/tcpdump
     /usr/sbin/tcpdump = cap_net_admin,cap_net_raw+eip
 
 If you don't have `setcap` installed you can get it with::
@@ -156,7 +156,7 @@ If you don't have `setcap` installed you can get it with::
 
 Or otherwise (**not recommended**) do::
 
-    $ sudo chmod +s /usr/sbin/tcpdump
+    $ sudo chmod +s /usr/bin/tcpdump
 
 Please keep in mind that even the `setcap` method is not perfectly safe (due
 to potential security vulnerabilities) if the system has other users which are
