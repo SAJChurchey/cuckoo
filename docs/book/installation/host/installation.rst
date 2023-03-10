@@ -60,7 +60,9 @@ Although the above, a *global* installation of Cuckoo in your OS works mostly
 fine, we **highly recommend** installing Cuckoo in a ``virtualenv``, which
 looks roughly as follows::
 
-    $ virtualenv venv
+	$ sudo su cuckoo
+	$ cd ~
+    $ virtualenv --python=python2.7 venv
     $ . venv/bin/activate
     (venv)$ pip install -U pip setuptools
     (venv)$ pip install -U cuckoo
